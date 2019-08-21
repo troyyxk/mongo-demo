@@ -31,9 +31,15 @@ async function createCourse() {
 
 async function getCourses() {
   const courses = await Course.find({ author: "Mosh", isPublished: true }) // can add filter
+    // const courses = await Course.find({ author: /^m/ })
+    // .find({ author: /h$/ }) // can add filter
+    // we can CAN have multiple find
     .limit(10)
     .sort({ name: 1 }) // 1 for asending and -1 for desending
     .select({ name: 1, tags: 1 });
+  // .select({ name: 1, tags: 1 })
+  // .count();
+  // these 2 cannot coexist
   console.log(courses);
 }
 
